@@ -1,0 +1,30 @@
+
+Video
+=====
+The 15 KHz and 31 KHz modes are intended for analog video only. The pixel
+clock rates were multiplied up (8x and 4x respectively) in order to meet the
+requirements of the DAC, and to simplify the FPGA logic. If you happen to have
+a higher end flat panel monitor, then you may be able to display the 31 KHz
+mode over DVI-D, but the aspect ratio will be completely wrong because of the
+higher pixel rate. In this case, you may be able to adjust the monitor scaling
+in order to get the correct ratio.
+
+The 640x480 mode is intended for use with DVI-D flat panel monitors. It will
+display fine on just about any flat panel on the market, but the video data is
+simply scan doubled up to 480x384 inside a 640x480 display, so it won't fill
+the entire screen. If the monitor has a zoom feature then you should be able to
+fill the screen. 
+
+When the analog sync is set to composite, the composite sync signal is output
+on the analog H sync pin of the DVI connector.
+
+
+Keyboard
+========
+5 - Insert a coin into the left coin slot
+6 - Insert a coin into the right coin slot
+1 - Start a one player game
+2 - Start a two player game
+
+
+
