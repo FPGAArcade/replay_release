@@ -1,0 +1,110 @@
+CBM64 Kernal
+===========
+I've included my customized kernal which has a built-in wedge. The cbm64_xxx.ini files
+load this kernal by default. If you wish to temporarily fall back to the standard kernal
+you can use the "Load Kernal" menu item to load it in place of the custom kernal. Edit
+the file if you wish to use the standard kernal by default.
+
+Wedge commands
+--------------
+$  - list directory
+/  - load BASIC program at $0801
+%  - load ML program at address specified in the file
+>  - display hex dump of file
+<- - save BASIC program
+#  - change current device number (value in memory location $ba)
+@  - issue DOS command, or read error channel if not followed by an argument
+
+
+CBM1541
+========
+The CBM1541 drive emulation currently only supports D64 files. It will handle both 35 and
+40 track images, and uses the D64 error information to generate read errors if the file
+contains an error block.
+
+This drive emulation does have a few limitations. It doesn't support a full format via
+the N:DISKNAME,ID command. It will however handle a short format (N:DISKNAME) just fine.
+The error block, if it exists, is read-only. There's no way to create disk errors on the
+image file by using a disk tool on the C64.
+
+
+Epyx Fastload Cartridge
+=======================
+The Epyx Fastload cartridge requires special handling, and can't be loaded into ROM space
+from the menu. The 8K fastload cartridge data must be available in ROM space at both $8000
+and $c000, and since the Replay menu doesn't provide the ability to load a cartridge into
+two different memory areas in the same operation, the only way to load it correctly is
+from the .ini file. To activate fastload, in case it is disabled, change the cartridge
+type to Epyx Fastload from the menu, and then reset.
+
+
+Dual SID
+========
+The address of the second SID is $D420.
+
+
+Keyboard
+========
+The key mapping in the FPGA has been designed for a standard 104 key keyboard. This mapping
+emulates the positions of the keys on a C-64 keyboard. The keys that differ from what's
+printed on the PS/2 keycap are as follows.
+
+PS/2		C-64
+----		----
+-----------------------------
+Row 1
+-----------------------------
+`			horizontal arrow
+
+-			+
+
+=			-
+
+Home		Pound
+
+End 		CLR/HOME
+
+-----------------------------
+Row 2
+-----------------------------
+TAB			CTRL
+
+[			@
+
+]			*
+
+\			vertical arrow
+
+Insert		RESTORE
+
+-----------------------------
+Row 3
+-----------------------------
+CAPS LOCK	RUN/STOP
+
+;			:
+
+'			;
+
+Del			=
+
+-----------------------------
+Row 5
+-----------------------------
+CTRL		COMMODORE
+
+Down		Cursor down/up
+
+Right		Cursor right/left
+
+-----------------------------
+Key Pad
+-----------------------------
+NUM LOCK	F1
+
+7			F3
+
+4			F5
+
+1			F7
+
